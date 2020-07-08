@@ -3,21 +3,21 @@
 #include <nuvoton/Common.h>
 #include <nuvoton/Delay.h>
 #include <nuvoton/SFR_Macro.h>
-#define RELAY4 P01
-#define RELAY3 P04
-#define RELAY2 P03
-#define RELAY1 P05
+#define RELAY4 P15
+#define RELAY3 P12
+#define RELAY2 P15
+#define RELAY1 P12
 
-#define RED P11
-#define GREEN P00
-#define BLUE P10
+#define RED P01
+#define GREEN P04
+#define BLUE P03
 
 #define PWM_GREEN PWM3L
 #define PWM_BLUE PWM2L
 #define PWM_RED PWM1L
 
-#define BUTTON1 P15
-#define BUTTON2 P12
+#define BUTTON1 P00
+#define BUTTON2 P10
 
 int getchar(void)
 {
@@ -140,19 +140,19 @@ int main()
 	printf("\n\n\nHello world. I'm a hacky opensource firmware for LC-tech modules\n");
 	printf("Go check out my blog https://ncrmnt.org for more awesome stuff\n");
 	/* Relays */
-	P01_PushPull_Mode;
-	P03_PushPull_Mode;
-	P04_PushPull_Mode;
-	P05_PushPull_Mode;
+	P15_PushPull_Mode; /* Relay 4 */
+	P15_PushPull_Mode; /* Relay 2 */
+	P12_PushPull_Mode; /* Relay 3 */
+	P12_PushPull_Mode; /* Relay 1 */
 
 	/* LEDS */
-	P10_PushPull_Mode;
-	P11_PushPull_Mode;
-	P00_PushPull_Mode;
+	P03_PushPull_Mode; /* Blue */
+	P01_PushPull_Mode; /* Red */
+	P04_PushPull_Mode; /* Green */
 
 	/* Buttons */
-	P12_Input_Mode;
-	P15_Input_Mode;
+	P10_Input_Mode;
+	P00_Input_Mode;
 
 	/* buttonz */
 	PWMPH = 0;
@@ -167,6 +167,11 @@ int main()
 	RED = 0;
 	GREEN = 0;
 	BLUE = 1;
+
+        RELAY1 = 0;
+        RELAY2 = 0;
+        RELAY3 = 0;
+        RELAY4 = 0;
 
 	Timer0_Delay1ms(500);
 	PWM1H = 0;
