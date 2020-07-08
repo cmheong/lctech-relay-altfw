@@ -1,3 +1,6 @@
+Alternative firmware for LC-Tech 2-channel relay modules
+
+
 Alternative firmware for LC-Tech 4-channel relay modules
 See: https://github.com/nekromant/esphome-lctech-4chanel-modules
 
